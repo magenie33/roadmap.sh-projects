@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datepicker UI - 日期选择器</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Datepicker UI</h1>
+        <p>一个现代化的日期选择器界面</p>
+        
+        <div class="datepicker-wrapper">
+            <div class="datepicker-input">
+                <input type="text" placeholder="选择日期" value="2024-07-30" readonly>
+                <button class="calendar-icon" aria-label="打开日历">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                    </svg>
+                </button>
+            </div>
+            
+            <div class="datepicker-dropdown">
+                <div class="datepicker-header">
+                    <button class="nav-btn prev" aria-label="上个月">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="15,18 9,12 15,6"></polyline>
+                        </svg>
+                    </button>
+                    <div class="current-month">
+                        <span class="month">七月</span>
+                        <span class="year">2024</span>
+                    </div>
+                    <button class="nav-btn next" aria-label="下个月">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="9,18 15,12 9,6"></polyline>
+                        </svg>
+                    </button>
+                </div>
+                
+                <div class="datepicker-body">
+                    <div class="weekdays">
+                        <div class="weekday">日</div>
+                        <div class="weekday">一</div>
+                        <div class="weekday">二</div>
+                        <div class="weekday">三</div>
+                        <div class="weekday">四</div>
+                        <div class="weekday">五</div>
+                        <div class="weekday">六</div>
+                    </div>
+                    
+                    <div class="days-grid">
+                        <!-- 上个月的日期 -->
+                        <div class="day prev-month">25</div>
+                        <div class="day prev-month">26</div>
+                        <div class="day prev-month">27</div>
+                        <div class="day prev-month">28</div>
+                        <div class="day prev-month">29</div>
+                        <div class="day prev-month">30</div>
+                        
+                        <!-- 当前月的日期 -->
+                        <div class="day">1</div>
+                        <div class="day">2</div>
+                        <div class="day">3</div>
+                        <div class="day">4</div>
+                        <div class="day">5</div>
+                        <div class="day">6</div>
+                        <div class="day">7</div>
+                        <div class="day">8</div>
+                        <div class="day">9</div>
+                        <div class="day">10</div>
+                        <div class="day">11</div>
+                        <div class="day">12</div>
+                        <div class="day">13</div>
+                        <div class="day">14</div>
+                        <div class="day">15</div>
+                        <div class="day">16</div>
+                        <div class="day">17</div>
+                        <div class="day">18</div>
+                        <div class="day">19</div>
+                        <div class="day">20</div>
+                        <div class="day">21</div>
+                        <div class="day">22</div>
+                        <div class="day">23</div>
+                        <div class="day">24</div>
+                        <div class="day">25</div>
+                        <div class="day">26</div>
+                        <div class="day">27</div>
+                        <div class="day">28</div>
+                        <div class="day today">29</div>
+                        <div class="day selected">30</div>
+                        <div class="day">31</div>
+                        
+                        <!-- 下个月的日期 -->
+                        <div class="day next-month">1</div>
+                        <div class="day next-month">2</div>
+                        <div class="day next-month">3</div>
+                    </div>
+                </div>
+                
+                <div class="datepicker-footer">
+                    <button class="today-btn">今天</button>
+                    <button class="clear-btn">清除</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

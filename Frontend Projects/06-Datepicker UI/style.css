@@ -1,0 +1,433 @@
+/* 基础样式重置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container {
+    text-align: center;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    max-width: 500px;
+    width: 90%;
+}
+
+h1 {
+    color: #2d3748;
+    margin-bottom: 0.5rem;
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+p {
+    color: #718096;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
+
+/* 日期选择器容器 */
+.datepicker-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    max-width: 320px;
+}
+
+/* 输入框样式 */
+.datepicker-input {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: white;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.datepicker-input:hover {
+    border-color: #cbd5e0;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+.datepicker-input:focus-within {
+    border-color: #4299e1;
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.1);
+}
+
+.datepicker-input input {
+    flex: 1;
+    padding: 12px 16px;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    color: #2d3748;
+    background: transparent;
+    cursor: pointer;
+}
+
+.datepicker-input input::placeholder {
+    color: #a0aec0;
+}
+
+.calendar-icon {
+    background: none;
+    border: none;
+    padding: 12px;
+    cursor: pointer;
+    color: #718096;
+    transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.calendar-icon:hover {
+    color: #4299e1;
+}
+
+/* 下拉日历样式 */
+.datepicker-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    margin-top: 8px;
+    z-index: 1000;
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+}
+
+.datepicker-wrapper:hover .datepicker-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* 日历头部 */
+.datepicker-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px;
+    background: #f7fafc;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.nav-btn {
+    background: none;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    border-radius: 8px;
+    color: #718096;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-btn:hover {
+    background: #edf2f7;
+    color: #2d3748;
+}
+
+.current-month {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+}
+
+.month {
+    font-weight: 600;
+    color: #2d3748;
+    font-size: 1.1rem;
+}
+
+.year {
+    color: #718096;
+    font-size: 0.9rem;
+}
+
+/* 星期标题 */
+.weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    background: #f7fafc;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.weekday {
+    padding: 12px 8px;
+    text-align: center;
+    font-weight: 600;
+    color: #718096;
+    font-size: 0.9rem;
+}
+
+/* 日期网格 */
+.days-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    padding: 8px;
+}
+
+.day {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    color: #2d3748;
+    transition: all 0.3s ease;
+    position: relative;
+    margin: 2px;
+}
+
+.day:hover {
+    background: #edf2f7;
+    color: #2d3748;
+}
+
+.day.prev-month,
+.day.next-month {
+    color: #cbd5e0;
+}
+
+.day.prev-month:hover,
+.day.next-month:hover {
+    background: #f7fafc;
+    color: #a0aec0;
+}
+
+/* 特殊日期样式 */
+.day.today {
+    background: #4299e1;
+    color: white;
+    font-weight: 600;
+}
+
+.day.today:hover {
+    background: #3182ce;
+}
+
+.day.selected {
+    background: #2d3748;
+    color: white;
+    font-weight: 600;
+}
+
+.day.selected:hover {
+    background: #1a202c;
+}
+
+/* 日历底部 */
+.datepicker-footer {
+    display: flex;
+    gap: 8px;
+    padding: 16px;
+    background: #f7fafc;
+    border-top: 1px solid #e2e8f0;
+}
+
+.today-btn,
+.clear-btn {
+    flex: 1;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.today-btn {
+    background: #4299e1;
+    color: white;
+}
+
+.today-btn:hover {
+    background: #3182ce;
+}
+
+.clear-btn {
+    background: #e2e8f0;
+    color: #4a5568;
+}
+
+.clear-btn:hover {
+    background: #cbd5e0;
+}
+
+/* 响应式设计 */
+@media (max-width: 480px) {
+    .container {
+        padding: 1.5rem;
+        margin: 1rem;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    .datepicker-dropdown {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 90vw;
+        max-width: 320px;
+        margin: 0;
+    }
+    
+    .datepicker-wrapper:hover .datepicker-dropdown {
+        transform: translate(-50%, -50%);
+    }
+}
+
+/* 暗色模式支持 */
+@media (prefers-color-scheme: dark) {
+    body {
+        background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+    }
+    
+    .container {
+        background: rgba(45, 55, 72, 0.95);
+        color: #e2e8f0;
+    }
+    
+    h1 {
+        color: #f7fafc;
+    }
+    
+    p {
+        color: #a0aec0;
+    }
+    
+    .datepicker-input {
+        background: #2d3748;
+        border-color: #4a5568;
+    }
+    
+    .datepicker-input input {
+        color: #e2e8f0;
+    }
+    
+    .datepicker-input input::placeholder {
+        color: #718096;
+    }
+    
+    .datepicker-dropdown {
+        background: #2d3748;
+        border-color: #4a5568;
+    }
+    
+    .datepicker-header {
+        background: #1a202c;
+        border-color: #4a5568;
+    }
+    
+    .weekdays {
+        background: #1a202c;
+        border-color: #4a5568;
+    }
+    
+    .weekday {
+        color: #a0aec0;
+    }
+    
+    .day {
+        color: #e2e8f0;
+    }
+    
+    .day:hover {
+        background: #4a5568;
+    }
+    
+    .day.prev-month,
+    .day.next-month {
+        color: #4a5568;
+    }
+    
+    .day.prev-month:hover,
+    .day.next-month:hover {
+        background: #2d3748;
+        color: #718096;
+    }
+    
+    .datepicker-footer {
+        background: #1a202c;
+        border-color: #4a5568;
+    }
+    
+    .clear-btn {
+        background: #4a5568;
+        color: #e2e8f0;
+    }
+    
+    .clear-btn:hover {
+        background: #2d3748;
+    }
+}
+
+/* 动画效果 */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.datepicker-dropdown {
+    animation: fadeIn 0.3s ease;
+}
+
+/* 焦点样式 */
+.nav-btn:focus,
+.calendar-icon:focus,
+.day:focus,
+.today-btn:focus,
+.clear-btn:focus {
+    outline: 2px solid #4299e1;
+    outline-offset: 2px;
+}
+
+/* 无障碍支持 */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+} 
