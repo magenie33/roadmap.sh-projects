@@ -1,0 +1,203 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Pacifico&display=swap');
+
+:root {
+  --primary: #2d6cdf;
+  --secondary: #f5f7fa;
+  --accent: #1b1b1b;
+  --card-bg: #fff;
+  --border: #e0e0e0;
+  --shadow: 0 2px 12px rgba(44,62,80,0.08);
+  --radius: 12px;
+  --text: #222;
+  --muted: #888;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', Arial, sans-serif;
+  background: var(--secondary);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+header {
+  background: #fff;
+  box-shadow: var(--shadow);
+  padding: 0.5em 0;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.navbar {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2em;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+.logo img {
+  border-radius: 50%;
+  background: var(--border);
+}
+nav a {
+  color: var(--text);
+  text-decoration: none;
+  margin: 0 0.7em;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+nav a:hover {
+  color: var(--primary);
+}
+
+main {
+  max-width: 1200px;
+  margin: 2em auto;
+  padding: 0 1em;
+}
+.intro {
+  text-align: center;
+  margin-bottom: 2em;
+}
+.intro h1 {
+  font-family: 'Pacifico', cursive;
+  font-size: 2.5em;
+  margin: 0.2em 0 0.1em 0;
+  color: var(--primary);
+}
+.intro p {
+  color: var(--muted);
+  font-size: 1.1em;
+}
+
+.portfolio-grid {
+  display: flex;
+  gap: 2em;
+}
+.portfolio-left, .portfolio-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+}
+.card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.5em 1.2em;
+  border: 1px solid var(--border);
+}
+.card h2, .card h3 {
+  margin-top: 0;
+  color: var(--primary);
+  font-size: 1.2em;
+}
+.card ul {
+  padding-left: 1.2em;
+  margin: 0.5em 0;
+}
+.card li {
+  margin-bottom: 0.3em;
+}
+.card a {
+  color: var(--primary);
+  text-decoration: underline;
+  font-size: 0.98em;
+}
+.card a:hover {
+  color: #174ea6;
+}
+
+blockquote {
+  background: #f7faff;
+  border-left: 4px solid var(--primary);
+  margin: 0.5em 0;
+  padding: 0.8em 1em;
+  border-radius: var(--radius);
+  font-style: italic;
+  color: var(--accent);
+}
+blockquote span {
+  display: block;
+  margin-top: 0.7em;
+  color: var(--muted);
+  font-size: 0.95em;
+  font-style: normal;
+}
+
+.copyright {
+  text-align: center;
+  color: var(--muted);
+  margin-top: 1.5em;
+  font-size: 1em;
+}
+
+/* Table and grid for main content */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0.5em 0;
+}
+td, th {
+  border: 1px solid var(--border);
+  padding: 1em;
+  vertical-align: top;
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+  .portfolio-grid {
+    flex-direction: column;
+  }
+}
+@media (max-width: 600px) {
+  .navbar, main {
+    padding: 0 0.5em;
+  }
+  .portfolio-grid {
+    gap: 1em;
+  }
+  .card {
+    padding: 1em 0.7em;
+  }
+  table, td, th {
+    font-size: 0.98em;
+    padding: 0.5em;
+  }
+  .intro h1 {
+    font-size: 1.5em;
+  }
+}
+
+/* Form Styling */
+input, textarea, button {
+  font-family: inherit;
+  font-size: 1em;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  padding: 0.5em 0.7em;
+  margin-bottom: 0.7em;
+  width: 100%;
+  box-sizing: border-box;
+}
+button {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.2s;
+}
+button:hover {
+  background: #174ea6;
+} 
