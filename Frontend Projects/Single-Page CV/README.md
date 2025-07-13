@@ -1,6 +1,8 @@
 # 单页简历项目
 
-这是一个基于 roadmap.sh 项目的单页简历，使用纯 HTML 构建。
+基于 [roadmap.sh 单页简历项目](https://roadmap.sh/projects/single-page-cv) 的练习实现。
+
+这是一个使用纯 HTML 构建的单页简历，完全符合 roadmap.sh 项目要求。
 
 ## 项目特点
 
