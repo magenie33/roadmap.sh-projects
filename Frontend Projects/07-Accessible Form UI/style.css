@@ -1,0 +1,663 @@
+/* 基础样式重置和变量定义 */
+:root {
+    /* 颜色系统 */
+    --primary-color: #3b82f6;
+    --primary-hover: #2563eb;
+    --primary-light: #dbeafe;
+    --success-color: #10b981;
+    --warning-color: #f59e0b;
+    --error-color: #ef4444;
+    --text-primary: #1f2937;
+    --text-secondary: #6b7280;
+    --text-muted: #9ca3af;
+    --border-color: #d1d5db;
+    --border-focus: #3b82f6;
+    --background-primary: #ffffff;
+    --background-secondary: #f9fafb;
+    --background-tertiary: #f3f4f6;
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    
+    /* 间距系统 */
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+    --spacing-2xl: 3rem;
+    
+    /* 字体系统 */
+    --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    --font-size-xs: 0.75rem;
+    --font-size-sm: 0.875rem;
+    --font-size-base: 1rem;
+    --font-size-lg: 1.125rem;
+    --font-size-xl: 1.25rem;
+    --font-size-2xl: 1.5rem;
+    --font-size-3xl: 1.875rem;
+    
+    /* 圆角系统 */
+    --radius-sm: 0.25rem;
+    --radius-md: 0.375rem;
+    --radius-lg: 0.5rem;
+    --radius-xl: 0.75rem;
+    
+    /* 过渡动画 */
+    --transition-fast: 150ms ease-in-out;
+    --transition-normal: 250ms ease-in-out;
+    --transition-slow: 350ms ease-in-out;
+}
+
+/* 暗色模式变量 */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --text-primary: #f9fafb;
+        --text-secondary: #d1d5db;
+        --text-muted: #9ca3af;
+        --border-color: #374151;
+        --background-primary: #111827;
+        --background-secondary: #1f2937;
+        --background-tertiary: #374151;
+    }
+}
+
+/* 基础样式重置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+*:focus {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+*:focus:not(:focus-visible) {
+    outline: none;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-family);
+    font-size: var(--font-size-base);
+    line-height: 1.6;
+    color: var(--text-primary);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-md);
+}
+
+/* 容器样式 */
+.container {
+    width: 100%;
+    max-width: 500px;
+    background: var(--background-primary);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-xl);
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+}
+
+/* 头部样式 */
+header {
+    text-align: center;
+    padding: var(--spacing-2xl) var(--spacing-xl) var(--spacing-xl);
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-hover) 100%);
+    color: white;
+}
+
+header h1 {
+    font-size: var(--font-size-3xl);
+    font-weight: 700;
+    margin-bottom: var(--spacing-sm);
+    letter-spacing: -0.025em;
+}
+
+header p {
+    font-size: var(--font-size-lg);
+    opacity: 0.9;
+    font-weight: 400;
+}
+
+/* 主内容区域 */
+main {
+    padding: var(--spacing-xl);
+}
+
+/* 表单样式 */
+.accessible-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+}
+
+.form-header {
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+}
+
+.form-header h2 {
+    font-size: var(--font-size-2xl);
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-sm);
+}
+
+.form-header p {
+    color: var(--text-secondary);
+    font-size: var(--font-size-base);
+}
+
+/* 表单组样式 */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.form-label {
+    font-weight: 500;
+    color: var(--text-primary);
+    font-size: var(--font-size-sm);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.required {
+    color: var(--error-color);
+    font-weight: 600;
+}
+
+/* 输入框样式 */
+.form-input {
+    padding: var(--spacing-md);
+    border: 2px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    font-size: var(--font-size-base);
+    color: var(--text-primary);
+    background: var(--background-primary);
+    transition: all var(--transition-normal);
+    font-family: inherit;
+}
+
+.form-input::placeholder {
+    color: var(--text-muted);
+}
+
+.form-input:hover {
+    border-color: var(--text-muted);
+}
+
+.form-input:focus {
+    border-color: var(--border-focus);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* 红框和红色警告完全同步 */
+.form-input:invalid:not(:focus):not(:placeholder-shown) {
+    border-color: var(--error-color) !important;
+}
+
+/* 只在表单提交后且验证失败时显示红色边框 */
+.accessible-form:invalid .form-input:invalid {
+    border-color: var(--error-color);
+}
+
+/* 密码输入框包装器 */
+.password-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-input {
+    padding-right: 3rem;
+}
+
+/* 密码可见性切换 - 纯CSS实现 */
+.password-toggle {
+    position: absolute;
+    right: var(--spacing-sm);
+    background: none;
+    border: none;
+    padding: var(--spacing-sm);
+    cursor: pointer;
+    color: var(--text-muted);
+    border-radius: var(--radius-md);
+    transition: all var(--transition-fast);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.password-toggle:hover {
+    background: var(--background-tertiary);
+    color: var(--text-primary);
+}
+
+.password-toggle:focus {
+    background: var(--background-tertiary);
+    color: var(--text-primary);
+}
+
+/* 隐藏checkbox */
+.password-toggle-input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* 默认显示眼睛图标，隐藏眼睛关闭图标 */
+.eye-off-icon {
+    display: none;
+}
+
+/* 当checkbox被选中时，切换图标显示 */
+.password-toggle-input:checked ~ .eye-icon {
+    display: none;
+}
+
+.password-toggle-input:checked ~ .eye-off-icon {
+    display: block;
+}
+
+/* 当checkbox被选中时，改变密码输入框类型 */
+.password-toggle-input:checked ~ .password-input {
+    -webkit-text-security: none;
+    text-security: none;
+}
+
+/* 错误消息样式 */
+.error-message {
+    color: var(--error-color);
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    min-height: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    opacity: 0;
+    transition: opacity var(--transition-normal);
+}
+input:invalid {
+  border-color: var(--border-color) !important;
+}
+input:invalid:not(:focus):not(:placeholder-shown) {
+    border-color: var(--error-color);
+}
+input:invalid:not(:focus):not(:placeholder-shown) + .error-message {
+    opacity: 1;
+}
+input:valid + .error-message {
+    opacity: 0;
+}
+.error-message::before {
+    content: "⚠";
+    font-size: var(--font-size-xs);
+}
+
+/* 密码强度指示器 */
+.password-strength {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-sm);
+}
+
+.strength-bar {
+    flex: 1;
+    height: 4px;
+    background: var(--background-tertiary);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+}
+
+.strength-fill {
+    height: 100%;
+    width: 0%;
+    transition: all var(--transition-normal);
+    border-radius: var(--radius-sm);
+}
+
+.strength-fill.weak {
+    width: 25%;
+    background: var(--error-color);
+}
+
+.strength-fill.fair {
+    width: 50%;
+    background: var(--warning-color);
+}
+
+.strength-fill.good {
+    width: 75%;
+    background: var(--primary-color);
+}
+
+.strength-fill.strong {
+    width: 100%;
+    background: var(--success-color);
+}
+
+.strength-text {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+    font-weight: 500;
+    min-width: 4rem;
+    text-align: right;
+}
+
+/* 密码要求清单 */
+.requirements-list {
+    margin-top: var(--spacing-md);
+    padding: var(--spacing-md);
+    background: var(--background-secondary);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-color);
+}
+
+.requirements-title {
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: var(--spacing-sm);
+}
+
+.requirements-list ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.requirement-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+    transition: color var(--transition-fast);
+}
+
+.requirement-item.met {
+    color: var(--success-color);
+}
+
+.requirement-item.met .requirement-icon {
+    content: "✅";
+}
+
+.requirement-icon {
+    font-size: var(--font-size-xs);
+    width: 1rem;
+    text-align: center;
+}
+
+/* 纯CSS实现的要求清单状态变化 */
+/* 使用:not(:placeholder-shown)来检测实际填写的内容 */
+.password-input:not(:placeholder-shown) ~ .requirements-list .requirement-item {
+    position: relative;
+}
+
+/* 当密码字段有内容时，显示成功状态 */
+.password-input:not(:placeholder-shown) ~ .requirements-list .requirement-item:nth-child(1) {
+    color: var(--success-color);
+}
+
+.password-input:not(:placeholder-shown) ~ .requirements-list .requirement-item:nth-child(1) .requirement-icon::before {
+    content: "✅";
+}
+
+.password-input:not(:placeholder-shown) ~ .requirements-list .requirement-item:nth-child(2) {
+    color: var(--success-color);
+}
+
+.password-input:not(:placeholder-shown) ~ .requirements-list .requirement-item:nth-child(2) .requirement-icon::before {
+    content: "✅";
+}
+
+.password-input:not(:placeholder-shown) ~ .requirements-list .requirement-item:nth-child(3) {
+    color: var(--success-color);
+}
+
+.password-input:not(:placeholder-shown) ~ .requirements-list .requirement-item:nth-child(3) .requirement-icon::before {
+    content: "✅";
+}
+
+.password-input:not(:placeholder-shown) ~ .requirements-list .requirement-item:nth-child(4) {
+    color: var(--success-color);
+}
+
+.password-input:not(:placeholder-shown) ~ .requirements-list .requirement-item:nth-child(4) .requirement-icon::before {
+    content: "✅";
+}
+
+.password-input:not(:placeholder-shown) ~ .requirements-list .requirement-item:nth-child(5) {
+    color: var(--success-color);
+}
+
+.password-input:not(:placeholder-shown) ~ .requirements-list .requirement-item:nth-child(5) .requirement-icon::before {
+    content: "✅";
+}
+
+/* 表单进度条 */
+.form-progress {
+    margin-top: var(--spacing-lg);
+    padding: var(--spacing-lg);
+    background: var(--background-secondary);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border-color);
+}
+
+.progress-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-sm);
+}
+
+.progress-label {
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.progress-percentage {
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.progress-bar-wrapper {
+    position: relative;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: var(--background-tertiary);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--primary-color) 0%, var(--primary-hover) 100%);
+    border-radius: var(--radius-sm);
+    transition: width var(--transition-normal);
+}
+
+/* 纯CSS实现的进度条状态变化 */
+/* 使用:not(:placeholder-shown)来检测实际填写的内容 */
+.form-input:not(:placeholder-shown) ~ .form-progress .progress-fill {
+    width: 25%;
+}
+
+.form-input:not(:placeholder-shown) ~ .form-progress .progress-percentage::after {
+    content: "25%";
+}
+
+/* 当多个字段都有内容时，逐步增加进度 */
+.form-input:not(:placeholder-shown) ~ .form-input:not(:placeholder-shown) ~ .form-progress .progress-fill {
+    width: 50%;
+}
+
+.form-input:not(:placeholder-shown) ~ .form-input:not(:placeholder-shown) ~ .form-progress .progress-percentage::after {
+    content: "50%";
+}
+
+.form-input:not(:placeholder-shown) ~ .form-input:not(:placeholder-shown) ~ .form-input:not(:placeholder-shown) ~ .form-progress .progress-fill {
+    width: 75%;
+}
+
+.form-input:not(:placeholder-shown) ~ .form-input:not(:placeholder-shown) ~ .form-input:not(:placeholder-shown) ~ .form-progress .progress-percentage::after {
+    content: "75%";
+}
+
+.form-input:not(:placeholder-shown) ~ .form-input:not(:placeholder-shown) ~ .form-input:not(:placeholder-shown) ~ .form-input:not(:placeholder-shown) ~ .form-progress .progress-fill {
+    width: 100%;
+}
+
+.form-input:not(:placeholder-shown) ~ .form-input:not(:placeholder-shown) ~ .form-input:not(:placeholder-shown) ~ .form-input:not(:placeholder-shown) ~ .form-progress .progress-percentage::after {
+    content: "100%";
+}
+
+/* 默认显示0% */
+.progress-percentage:empty::after {
+    content: "0%";
+}
+
+/* 表单操作区域 */
+.form-actions {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-lg);
+}
+
+.submit-btn {
+    padding: var(--spacing-md) var(--spacing-xl);
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: var(--radius-lg);
+    font-size: var(--font-size-base);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    font-family: inherit;
+    position: relative;
+    overflow: hidden;
+}
+
+.submit-btn:hover {
+    background: var(--primary-hover);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-lg);
+}
+
+.submit-btn:active {
+    transform: translateY(0);
+}
+
+.submit-btn:disabled {
+    background: var(--text-muted);
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.help-text {
+    font-size: var(--font-size-sm);
+    color: var(--text-secondary);
+    text-align: center;
+}
+
+/* 响应式设计 */
+@media (max-width: 640px) {
+    body {
+        padding: var(--spacing-sm);
+    }
+    
+    .container {
+        border-radius: var(--radius-lg);
+    }
+    
+    header {
+        padding: var(--spacing-xl) var(--spacing-lg) var(--spacing-lg);
+    }
+    
+    header h1 {
+        font-size: var(--font-size-2xl);
+    }
+    
+    main {
+        padding: var(--spacing-lg);
+    }
+    
+    .requirements-list {
+        padding: var(--spacing-sm);
+    }
+    
+    .form-progress {
+        padding: var(--spacing-md);
+    }
+}
+
+/* 减少动画偏好 */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* 高对比度模式支持 */
+@media (prefers-contrast: high) {
+    :root {
+        --border-color: #000000;
+        --text-primary: #000000;
+        --text-secondary: #333333;
+        --background-primary: #ffffff;
+        --background-secondary: #f0f0f0;
+    }
+    
+    .form-input {
+        border-width: 3px;
+    }
+    
+    .submit-btn {
+        border: 3px solid #000000;
+    }
+}
+
+/* 打印样式 */
+@media print {
+    body {
+        background: white;
+        color: black;
+    }
+    
+    .container {
+        box-shadow: none;
+        border: 1px solid #000;
+    }
+    
+    .password-toggle,
+    .submit-btn {
+        display: none;
+    }
+} 

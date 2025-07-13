@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="可访问的表单UI组件，展示现代表单设计的最佳实践">
+    <meta name="keywords" content="表单,可访问性,UI设计,前端开发">
+    <meta name="author" content="Roadmap.sh Projects">
+    <meta name="robots" content="index, follow">
+    <title>Accessible Form UI - 可访问表单界面</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Accessible Form UI</h1>
+            <p>一个可访问的表单界面</p>
+        </header>
+
+        <main>
+            <form class="accessible-form" novalidate>
+                <div class="form-header">
+                    <h2>创建账户</h2>
+                    <p>请填写以下信息完成注册</p>
+                </div>
+
+                <!-- 姓名字段 -->
+                <div class="form-group">
+                    <label for="fullName" class="form-label">
+                        姓名 <span class="required" aria-label="必填字段">*</span>
+                    </label>
+                    <input 
+                        type="text" 
+                        id="fullName" 
+                        name="fullName" 
+                        class="form-input"
+                        placeholder="请输入您的姓名"
+                        aria-describedby="fullName-error"
+                        aria-required="true"
+                        autocomplete="name"
+                        required
+                        pattern="^[^0-9?\(\)\[\]\{\}\+\*\|\^\$]{2,50}$"
+                        inputmode="text"
+                        minlength="2"
+                        maxlength="50"
+                        title="姓名不能包含数字及特殊字符，长度2-50个字符"
+                    >
+                    <div id="fullName-error" class="error-message" role="alert" aria-live="polite">姓名不能包含数字及特殊字符，长度2-50个字符</div>
+                </div>
+
+                <!-- 邮箱字段 -->
+                <div class="form-group">
+                    <label for="email" class="form-label">
+                        邮箱地址 <span class="required" aria-label="必填字段">*</span>
+                    </label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        name="email" 
+                        class="form-input"
+                        placeholder="请输入有效的邮箱地址"
+                        aria-describedby="email-error"
+                        aria-required="true"
+                        autocomplete="email"
+                        required
+                    >
+                    <div id="email-error" class="error-message" role="alert" aria-live="polite">请输入有效的邮箱地址</div>
+                </div>
+
+                <!-- 密码字段 -->
+                <div class="form-group">
+                    <label for="password" class="form-label">
+                        密码 <span class="required" aria-label="必填字段">*</span>
+                    </label>
+                    <input 
+                        type="password" 
+                        id="password" 
+                        name="password" 
+                        class="form-input"
+                        placeholder="请输入密码"
+                        aria-describedby="password-error"
+                        aria-required="true"
+                        autocomplete="new-password"
+                        required
+                        
+                        pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*_+\-= 5B\u00005D{};':\\|,.<>\/?~]).{8,}$"
+                        minlength="8"
+                        title="密码至少8位，且包含大写字母、小写字母、数字和特殊符号"
+                    >
+                    <div id="password-error" class="error-message" role="alert" aria-live="polite">密码至少8位，且包含大写字母、小写字母、数字和特殊符号</div>
+                </div>
+
+                <!-- 确认密码字段 -->
+                <div class="form-group">
+                    <label for="confirmPassword" class="form-label">
+                        确认密码 <span class="required" aria-label="必填字段">*</span>
+                    </label>
+                    <input 
+                        type="password" 
+                        id="confirmPassword" 
+                        name="confirmPassword" 
+                        class="form-input"
+                        placeholder="请再次输入密码"
+                        aria-describedby="confirmPassword-error"
+                        aria-required="true"
+                        autocomplete="new-password"
+                        required
+                        pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*_+\-= 5B\u00005D{};':\\|,.<>\/?~]).{8,}$"
+                        minlength="8"
+                        title="密码至少8位，且包含大写字母、小写字母、数字和特殊符号"
+                    >
+                    <div id="confirmPassword-error" class="error-message" role="alert" aria-live="polite">请确认密码</div>
+                </div>
+
+                <!-- 表单完成度进度条 -->
+                <div class="form-progress">
+                    <div class="progress-header">
+                        <label for="progress-bar" class="progress-label">表单完成度</label>
+                        <span class="progress-percentage" id="progressPercentage"></span>
+                    </div>
+                    <div class="progress-bar-wrapper">
+                        <div 
+                            class="progress-bar" 
+                            id="progressBar" 
+                            role="progressbar" 
+                            aria-valuenow="0" 
+                            aria-valuemin="0" 
+                            aria-valuemax="100"
+                            aria-labelledby="progress-label"
+                        >
+                            <div class="progress-fill" id="progressFill"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 提交按钮 -->
+                <div class="form-actions">
+                    <button 
+                        type="submit" 
+                        class="submit-btn"
+                        aria-describedby="submit-help"
+                    >
+                        创建账户
+                    </button>
+                    <div id="submit-help" class="help-text">
+                        点击按钮完成注册，所有必填字段都已填写
+                    </div>
+                </div>
+            </form>
+        </main>
+    </div>
+</body>
+</html> 
