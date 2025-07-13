@@ -3,8 +3,13 @@
 这是一个包含 [roadmap.sh](https://roadmap.sh) 项目练习的集合仓库。
 
 ## 项目列表
-https://roadmap.sh/projects/single-page-cv
 
+### Frontend Projects
+
+#### Beginner
+
+- [Single-Page CV](https://roadmap.sh/projects/single-page-cv)
+- [Basic HTML Website](https://roadmap.sh/projects/basic-html-website)
 
 ## 贡献
 
