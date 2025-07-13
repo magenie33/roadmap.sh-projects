@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+:root {
+  --primary: #2d6cdf;
+  --success: #2ecc40;
+  --warning: #f1c40f;
+  --danger: #e74c3c;
+  --gray: #f5f7fa;
+  --border: #e0e0e0;
+  --text: #222;
+  --muted: #888;
+  --radius: 10px;
+  --shadow: 0 2px 12px rgba(44,62,80,0.08);
+  --card-bg: #fff;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --primary: #6ca0ff;
+    --success: #4be07b;
+    --warning: #ffe066;
+    --danger: #ff7675;
+    --gray: #23272f;
+    --border: #333a45;
+    --text: #f5f7fa;
+    --muted: #b0b8c1;
+    --card-bg: #181c22;
+    --shadow: 0 2px 16px rgba(0,0,0,0.18);
+  }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Roboto', Arial, sans-serif;
+  background: var(--gray);
+  color: var(--text);
+  transition: background 0.3s, color 0.3s;
+}
+
+main {
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 2em 1em;
+}
+
+/* Changelog Container */
+.changelog-container {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 2em 2em 1.5em 2em;
+  max-width: 500px;
+  width: 100%;
+  border: 1px solid var(--border);
+  transition: background 0.3s, box-shadow 0.3s;
+}
+.changelog-container h1 {
+  margin-top: 0;
+  font-size: 2em;
+  color: var(--primary);
+  letter-spacing: 1px;
+  text-align: left;
+  outline: none;
+}
+
+.changelog-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+}
+
+/* Changelog Card */
+.changelog-item {
+  background: var(--gray);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  padding: 1.2em 1.2em 1em 1.2em;
+  box-shadow: 0 1px 4px rgba(44,62,80,0.04);
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.changelog-item:hover {
+  box-shadow: 0 4px 16px rgba(44,62,80,0.13);
+  transform: translateY(-2px) scale(1.01);
+}
+
+.changelog-header {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+  margin-bottom: 0.7em;
+  flex-wrap: wrap;
+}
+.changelog-version {
+  font-weight: bold;
+  color: var(--primary);
+  font-size: 1.1em;
+}
+.changelog-date {
+  color: var(--muted);
+  font-size: 0.98em;
+}
+.changelog-badge {
+  font-size: 0.85em;
+  font-weight: bold;
+  border-radius: 8px;
+  padding: 0.2em 0.8em;
+  margin-left: auto;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  background: var(--primary);
+  color: #fff;
+  box-shadow: 0 1px 4px rgba(44,62,80,0.08);
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+  cursor: default;
+}
+.changelog-badge.new {
+  background: var(--success);
+}
+.changelog-badge.update {
+  background: var(--primary);
+}
+.changelog-badge.release {
+  background: var(--warning);
+  color: #222;
+}
+.changelog-badge:focus, .changelog-badge:hover {
+  outline: 2px solid var(--primary);
+  transform: scale(1.08) rotate(-2deg);
+}
+
+.changelog-item ul {
+  margin: 0.5em 0 0 1.2em;
+  padding: 0;
+}
+.changelog-item li {
+  margin-bottom: 0.3em;
+  font-size: 1em;
+  line-height: 1.6;
+}
+
+/* 可访问性: focus 状态 */
+.changelog-container h1:focus {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* 响应式设计 */
+@media (max-width: 800px) {
+  .changelog-container {
+    padding: 1.2em 0.7em;
+    max-width: 98vw;
+  }
+}
+@media (max-width: 500px) {
+  .changelog-container {
+    padding: 0.7em 0.2em;
+  }
+  .changelog-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.3em;
+  }
+  .changelog-item {
+    padding: 0.7em 0.5em 0.5em 0.5em;
+  }
+} 
